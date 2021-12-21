@@ -5,7 +5,7 @@ import { FeedbackStats } from "./components/FeedbackStats"
 import { AboutPage } from "./pages/AboutPage"
 import { FeedbackForm } from "./components/FeedbackForm"
 import { AboutIconLink } from "./components/AboutIconLink"
-import { BrowserRouter, Routes, Route, NavLink } from "react-router-dom"
+import { BrowserRouter, Routes, Route } from "react-router-dom"
 import { Post } from "./components/Post"
 import { FeedbackProvider } from "./context/FeedbackContext"
 
