@@ -1,25 +1,53 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react"
+import { Header } from "./components/Header"
+import { FeedbackList } from "./components/FeedbackList"
+import { FeedbackStats } from "./components/FeedbackStats"
+import { AboutPage } from "./pages/AboutPage"
+import { FeedbackForm } from "./components/FeedbackForm"
+import { AboutIconLink } from "./components/AboutIconLink"
+import { BrowserRouter, Routes, Route, NavLink } from "react-router-dom"
+import { Post } from "./components/Post"
+import { FeedbackProvider } from "./context/FeedbackContext"
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <>
+      <FeedbackProvider>
+        <BrowserRouter>
+          <Header />
+          <div className="container">
+            <Routes>
+              <Route
+                exact
+                path="/"
+                element={
+                  <>
+                    <FeedbackForm />
+                    <FeedbackStats />
+                    <FeedbackList />
+                  </>
+                }
+              ></Route>
+
+              <Route path="/about" element={<AboutPage />} />
+              <Route path="/post/*" element={<Post />} />
+            </Routes>
+
+            {/* <Card>
+            <NavLink to="/" activeClassName="active">
+              Home
+            </NavLink>
+            <NavLink to="/about" activeClassName="active">
+              About
+            </NavLink>
+          </Card> */}
+
+            <AboutIconLink />
+          </div>
+        </BrowserRouter>
+      </FeedbackProvider>
+    </>
+  )
 }
 
-export default App;
+export default App
